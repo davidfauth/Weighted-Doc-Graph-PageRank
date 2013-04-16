@@ -4,7 +4,8 @@ Mortar is a platform-as-a-service for Hadoop.  With Mortar, you can run jobs on 
 
 # Getting Started
 
-This Mortar project is a generic framework for calculating Pageranks for the nodes of any directed graph. There are two example scripts which demonstrate its use. `patents-pagerank` runs Pagerank on a graph of patent citation relationships to find which organizations produce the most influential patents. `twitter-pagerank` runs Pagerank on a graph of Twitter follower relationships to find the most influential Twitter users. Alternatively, you can configure the template script `my-pagerank` to run Pagerank on your own data (see the last section of this README). Regardless of which you choose, there are some steps to get started:
+This Mortar project uses generic framework for calculating Pageranks for the nodes of the DocGraph data graph. This project is based on a more generic Mortar developed project that you can find at Mortar's Github [page](http://www.github.com/mortardata/mortar-pagerank.git)
+Regardless of which you choose, there are some steps to get started:
 
 1. [Signup for a Mortar account](https://app.mortardata.com/signup)
 1. [Install the Mortar Development Framework](http://help.mortardata.com/#!/install_mortar_development_framework)
@@ -40,7 +41,7 @@ Pagerank is an iterative algorithm.  Each pass through the algorithm relies on t
 
 ## Control Scripts
 
-The files `./controlscripts/twitter-pagerank.py` and `./controlscripts/patents-pagerank.py` are the top level scripts that we run in Mortar to find Pageranks, for the Twitter graph and the Patent Citations graph respectively. All they do is set parameters for shared code in `controlscripts/pagerank_lib.py` and call it. This shared code uses [Embedded Pig](http://help.mortardata.com/reference/pig/embedded_pig) to run our various pig scripts in the correct order and with the correct parameters.
+The files `./controlscripts/docGraphPageRank.py` is the top level scripts that we run in Mortar to find Pageranks, for the DocGraph dataset. All they do is set parameters for shared code in `controlscripts/pagerank_lib.py` and call it. This shared code uses [Embedded Pig](http://help.mortardata.com/reference/pig/embedded_pig) to run our various pig scripts in the correct order and with the correct parameters.
 
 The file `./controlscripts/my-pagerank.py` is the template which you can configure to run Pagerank on your own data.
 
@@ -48,19 +49,7 @@ For easier debugging of control scripts all print statements are included in the
 
 ## Pig Scripts
 
-This project contains six pig scripts: three for generating graphs to use with Pagerank and three which implement the Pagerank algorithm.
-
-### generate\_twitter\_graph.pig
-
-This pig script takes the full Twitter follower graph from 2010 and returns the subset of the graph that includes edges between the top 100 000 users by \# followers.
-
-### generate\_patent\_citation\_graph.pig
-
-This pig script takes the US Patent Grant dataset (already in PigStorage form), projects from all the available information just the citation graph, and does the reduction so that each node is an organization instead of an individual patent, as described earlier.
-
-### generate\_my\_graph.pig
-
-This template script shows steps you might take to generate a graph from your own data to input into the Pagerank scripts.
+This project contains three pig scripts which implement the Pagerank algorithm.
 
 ### pagerank\_preprocess.pig
 
