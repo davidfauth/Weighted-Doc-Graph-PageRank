@@ -10,27 +10,25 @@ This Mortar project is a generic framework for calculating Pageranks for the nod
 1. [Install the Mortar Development Framework](http://help.mortardata.com/#!/install_mortar_development_framework)
 1. Clone this repository to your computer and register it as a project with Mortar:
 
-        git clone git@github.com:mortardata/mortar-pagerank.git
-        cd mortar-pagerank
-        mortar register mortar-pagerank
+       	git clone git@github.com:davidfauth/Weighted-Doc-Graph-PageRank.git
+        cd Weighted-Doc-Graph-PageRank
+        mortar register Weighted-Doc-Graph-PageRank
+	
+1. Configure the data sources. 
+		In controlscripts/docGraphPageRank.py file, modify the location of the edges variable to point to the location of your DocGraph dataset.
+		In controlscripts/pagerank_lib.py file, modify the location of the NUCC_CODES_INPUT and NPI_DATA_INPUT file locations.
 
-## Patents Example
+## DocGraph Example
 
 Once everything is set up, you can run the Patents example with the command:
 
-        mortar run patents-pagerank --clustersize 2 --singlejobcluster
+        mortar run docGraphPageRank --clustersize 5 --singlejobcluster
 
-This script runs on a graph of patent citations for US patents granted between 2007 and 2012. As the citation graph itself is very sparse, we reduce the graph so that nodes are organizations instead of individual patents: the edge between organization A and organization B has a weight equal to the number of patents filed by organization A which cite patents filed by organization B. The script should finish in about 50 minutes on a 2-node cluster.
+		By default this script will run on the full DocGraph data set with the most followers and finish in about 1 hour and 30 minutes using a 5 node cluster.
 
-The patent data we're using is generated from public information made available in XML form by the United States Patent Office (USPTO) and hosted by Google [here](http://www.google.com/googlebooks/uspto-patents-grants-biblio.html). We parsed the XML into PigStorage format at put it up at s3://mortar-example-data/pagerank/patents/patent-data. There is actually a lot of information beyond just the citations which we don't use in this project--see the LOAD\_PATENTS macro in `./macros/patents.pig` to see a schema of the available information.
+# DocGraph Data
 
-## Twitter Example
-
-You can run the Twitter example with the command:
-
-        mortar run twitter-pagerank --clustersize 4 --singlejobcluster
-
-This script runs on the a graph of follower relationships between the 25k Twitter users (40M edges) with the most overall followers (as in, only relationships between users who are already known to be at least modestly influential are considered). The data comes from [What is Twitter, a Social Network or a News Media?](http://an.kaist.ac.kr/traces/WWW2010.html) and was generated in early 2010. The script will finish in about an hour and a half on a 4-node cluster.
+		The data we're using comes from [About DocGraph](http://notonlydev.com/docgraph/) headed up by [Fred Trotter](http://twitter.com/fredtrotter)
 
 # The Pagerank Algorithm
 
