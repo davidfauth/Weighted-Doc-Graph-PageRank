@@ -28,7 +28,7 @@ Once everything is set up, you can run the Patents example with the command:
 
 # DocGraph Data
 
-		The data we're using comes from [About DocGraph](http://notonlydev.com/docgraph/) headed up by [Fred Trotter](http://twitter.com/fredtrotter)
+The data we're using comes from [About DocGraph](http://notonlydev.com/docgraph/) headed up by [Fred Trotter](http://twitter.com/fredtrotter)
 
 # The Pagerank Algorithm
 
