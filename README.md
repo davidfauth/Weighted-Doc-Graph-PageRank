@@ -2,10 +2,18 @@
 
 Mortar is a platform-as-a-service for Hadoop.  With Mortar, you can run jobs on Hadoop using Apache Pig and Python without any special training.  You create your project using the Mortar Development Framework, deploy code using the Git revision control system, and Mortar does the rest.
 
+# DocGraph Data
+
+The data we're using comes from [About DocGraph](http://notonlydev.com/docgraph/) headed up by [Fred Trotter](http://twitter.com/fredtrotter)
+
+# Data
+This example also relies on the National Provider Standard Identifier (NPI) file located [here](http://nppes.viva-it.com/NPI_Files.html) and the 
+National Uniform Claim Committee (NUCC) Health Care Provider Taxonomy Code Set located [here](http://www.nucc.org/index.php?option=com_content&view=article&id=107&Itemid=132).
+
 # Getting Started
 
 This Mortar project uses generic framework for calculating Pageranks for the nodes of the DocGraph data graph. This project is based on a more generic Mortar developed project that you can find at Mortar's Github [page](http://www.github.com/mortardata/mortar-pagerank.git)
-Regardless of which you choose, there are some steps to get started:
+There are some steps to get started:
 
 1. [Signup for a Mortar account](https://app.mortardata.com/signup)
 1. [Install the Mortar Development Framework](http://help.mortardata.com/#!/install_mortar_development_framework)
@@ -26,10 +34,6 @@ Once everything is set up, you can run the Patents example with the command:
         mortar run docGraphPageRank --clustersize 5 --singlejobcluster
 
 		By default this script will run on the full DocGraph data set with the most followers and finish in about 1 hour and 30 minutes using a 5 node cluster.
-
-# DocGraph Data
-
-The data we're using comes from [About DocGraph](http://notonlydev.com/docgraph/) headed up by [Fred Trotter](http://twitter.com/fredtrotter)
 
 # The Pagerank Algorithm
 
